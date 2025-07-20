@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 1. CUSTOMIZE: Your Name in the browser tab -->
+    <title>[Your Name] | AI & ML Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* -- Light Mode Colors -- */
+            --bg-color-light: #f8fafc; /* Slate 50 */
+            --bg-gradient-end-light: #f1f5f9; /* Slate 100 for gradient */
+            --text-color-light: #334155; /* Slate 700 */
+            --heading-color-light: #0f172a; /* Slate 900 */
+            --border-color-light: #e2e8f0; /* Slate 200 */
+            --card-bg-light: #ffffff; /* White */
+            --social-icon-light: #64748b; /* Slate 500 */
+            --button-secondary-bg-light: #ffffff;
+            --button-secondary-text-light: #334155;
+            --button-secondary-border-light: #cbd5e1;
+            --header-bg-light: rgba(248, 250, 252, 0.8); /* Slate 50 with opacity */
+
+            /* -- Dark Mode Colors -- */
+            --bg-color-dark: #0f172a; /* Slate 900 */
+            --text-color-dark: #cbd5e1; /* Slate 300 */
+            --heading-color-dark: #f1f5f9; /* Slate 100 */
+            --border-color-dark: #334155; /* Slate 700 */
+            --card-bg-dark: #1e293b; /* Slate 800 */
+            --social-icon-dark: #94a3b8; /* Slate 400 */
+            --button-secondary-bg-dark: #1e293b;
+            --button-secondary-text-dark: #cbd5e1;
+            --button-secondary-border-dark: #475569;
+            --header-bg-dark: rgba(15, 23, 42, 0.8); /* Slate 900 with opacity */
+            
+            /* -- Universal Theme Accent Color -- */
+            --theme-color: #6489d7;
+            --theme-color-darker: #4a6fb2;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color-light);
+            background-image: linear-gradient(to bottom, var(--bg-color-light), var(--bg-gradient-end-light));
+            color: var(--text-color-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        html.dark body {
+            background-color: var(--bg-color-dark);
+            background-image: none;
+            color: var(--text-color-dark);
+        }
+
+        h1, h2, h3 { color: var(--heading-color-light); }
+        html.dark h1, html.dark h2, html.dark h3 { color: var(--heading-color-dark); }
+
+        .bg-card { background-color: var(--card-bg-light); }
+        html.dark .bg-card { background-color: var(--card-bg-dark); }
+
+        .border-themed { border-color: var(--border-color-light); }
+        html.dark .border-themed { border-color: var(--border-color-dark); }
+        
+        .header-bg { background-color: var(--header-bg-light); }
+        html.dark .header-bg { background-color: var(--header-bg-dark); }
+        
+        .social-icon { color: var(--social-icon-light); }
+        html.dark .social-icon { color: var(--social-icon-dark); }
+        
+        .btn-secondary {
+            background-color: var(--button-secondary-bg-light);
+            color: var(--button-secondary-text-light);
+            border-color: var(--button-secondary-border-light);
+        }
+        html.dark .btn-secondary {
+            background-color: var(--button-secondary-bg-dark);
+            color: var(--button-secondary-text-dark);
+            border-color: var(--button-secondary-border-dark);
+        }
+        html.dark .btn-secondary:hover { background-color: #334155; } /* Slate 700 */
+        .btn-secondary:hover { background-color: #f1f5f9; } /* Slate 100 */
+
+
+        .theme-text { color: var(--theme-color); }
+        .theme-bg { background-color: var(--theme-color); }
+        .theme-bg-hover:hover { background-color: var(--theme-color-darker); }
+        .social-icon:hover {
+            color: var(--theme-color);
+            transform: translateY(-2px);
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bg backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-themed">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- 2. CUSTOMIZE: Your Name in the header -->
+            <a href="#" class="text-xl font-bold">[Your Name]</a>
+            
+            <button id="theme-toggle" class="p-2 rounded-full social-icon" title="Toggle theme">
+                <svg id="theme-toggle-dark-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="theme-toggle-light-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3.05 4.95a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zm9.9 11.313a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM1.707 10.293a1 1 0 01-1.414 0l.707-.707a1 1 0 111.414 1.414l-.707.707z"></path></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6">
+        
+        <section id="home" class="text-center min-h-[90vh] flex flex-col justify-center items-center pt-20">
+            <!-- 3. CUSTOMIZE: Your profile picture -->
+            <img src="profile.jpg" alt="Profile Picture" class="w-32 h-32 rounded-full mb-6 border-4 border-white shadow-lg">
+            
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
+                <!-- 4. CUSTOMIZE: Your Name in the headline -->
+                Hello, I'm <span class="theme-text">[Your Name]</span>
+            </h1>
+            <!-- 5. CUSTOMIZE: Your one-line description -->
+            <p class="text-xl mb-6 max-w-2xl">A Master's student passionate about building intelligent systems with AI and Machine Learning.</p>
+            
+            <!-- 6. CUSTOMIZE: Your profile links -->
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" target="_blank" class="social-icon" title="GitHub"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg></a>
+                <a href="#" target="_blank" class="social-icon" title="LinkedIn"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="#" target="_blank" class="social-icon" title="LeetCode"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0 .12 2.421l.436 1.323.023.065.023.065a5.416 5.416 0 0 0 .97 1.435l.023.023.023.023a5.265 5.265 0 0 0 1.898 1.213l1.384.437a5.343 5.343 0 0 0 2.421.12l4.126-3.854 5.788-5.409a1.374 1.374 0 0 0 .438-.961 1.374 1.374 0 0 0-.438-.961l-5.409-5.788A1.374 1.374 0 0 0 13.483 0zm0 2.748l4.432 4.726-5.788 5.409-4.432-4.726zm-1.374 8.245l-4.126 3.854-1.095-.333a2.71 2.71 0 0 1-1.435-.97l-.023-.024a2.71 2.71 0 0 1-.97-1.435l-.024-.023a2.66 2.66 0 0 1-.12-1.21l.333-1.095z"/></svg></a>
+                <a href="#" target="_blank" class="social-icon" title="Kaggle"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19.95,9.66L15.2,12l4.75,2.34l-2.4,4.01l-5.6-3.89l-2.9,5.88h-4.3L9.65,12,4.8,9.66,2.4,13.67,4.8,24h4.3l2.9-8.25,5.6,3.89Z"/></svg></a>
+                <a href="#blog" class="social-icon" title="Blog"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M20 3H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h7v3H8v2h8v-2h-3v-3h7c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 14V5h16l.002 9H4z"></path><path d="M6 7h12v2H6zm0 4h12v2H6z"></path></svg></a>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#projects" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">View My Work</a>
+                <a href="#blog" class="btn-secondary border-2 font-semibold py-3 px-6 rounded-lg transition-colors duration-300">View My Writings</a>
+                <a href="resume.pdf" target="_blank" class="theme-bg theme-bg-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">Download Resume</a>
+            </div>
+        </section>
+
+        <section id="about" class="py-24">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                <!-- 7. CUSTOMIZE: The paragraphs about you. -->
+                <p class="text-lg leading-relaxed mb-4">I'm currently pursuing my Master's in Artificial Intelligence at <strong>[Your University]</strong>. My fascination with data and algorithms drives me to explore everything from natural language processing to computer vision.</p>
+                <p class="text-lg leading-relaxed">I believe in a first-principles approach to problem-solving and enjoy the process of transforming a complex challenge into a simple, elegant, and intelligent solution.</p>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 border-t border-themed">
+            <h2 class="text-3xl font-bold text-center mb-4">Featured Projects</h2>
+            <p class="text-center mb-12">A selection of my work.</p>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- 8. CUSTOMIZE: A project card. Copy-paste this whole block to add more projects. -->
+                <div class="bg-card p-6 rounded-lg border border-themed hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
+                    <img src="project1.png" alt="Project 1" class="rounded-md mb-4 h-48 w-full object-cover">
+                    <h3 class="text-xl font-bold mb-2">Project Title: Sentiment Analysis Model</h3>
+                    <p class="mb-4 flex-grow">Classified text reviews using an RNN, providing insights into customer opinions.</p>
+                    <div class="mt-auto flex gap-4">
+                        <!-- Link to your demo video -->
+                        <a href="#" target="_blank" class="w-1/2 text-center theme-bg theme-bg-hover text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">Demo</a>
+                        <!-- Link to your GitHub repo -->
+                        <a href="#" target="_blank" class="w-1/2 text-center btn-secondary border-2 font-semibold py-2 px-4 rounded-lg transition-colors duration-300">View Code</a>
+                    </div>
+                </div>
+
+                <!-- 9. CUSTOMIZE: Second project card. -->
+                <div class="bg-card p-6 rounded-lg border border-themed hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
+                    <img src="project2.png" alt="Project 2" class="rounded-md mb-4 h-48 w-full object-cover">
+                    <h3 class="text-xl font-bold mb-2">Project Title: Image Classification CNN</h3>
+                    <p class="mb-4 flex-grow">Built a CNN from scratch to classify images with high accuracy using data augmentation.</p>
+                    <div class="mt-auto flex gap-4">
+                        <!-- Link to your demo video -->
+                        <a href="#" target="_blank" class="w-1/2 text-center theme-bg theme-bg-hover text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">Demo</a>
+                        <!-- Link to your GitHub repo -->
+                        <a href="#" target="_blank" class="w-1/2 text-center btn-secondary border-2 font-semibold py-2 px-4 rounded-lg transition-colors duration-300">View Code</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="blog" class="py-24 border-t border-themed">
+            <h2 class="text-3xl font-bold text-center mb-4">My Thoughts & Writings</h2>
+            <p class="text-center mb-12">Sharing what I've learned.</p>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- 10. CUSTOMIZE: A blog post card. Copy-paste this block to add more posts. -->
+                <a href="#" target="_blank" class="block bg-card p-6 rounded-lg border border-themed hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-2">Understanding Transformers from Scratch</h3>
+                    <p class="mb-4">A deep dive into the attention mechanism that powers models like GPT-4 and BERT.</p>
+                    <span class="font-semibold theme-text hover:underline">Read More &rarr;</span>
+                </a>
+                 <!-- Add another blog card here -->
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 border-t border-themed">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-lg mb-8">I'm always open to discussing new projects, creative ideas, or opportunities.</p>
+                <!-- 11. CUSTOMIZE: Your email address -->
+                <a href="mailto:your.email@example.com" class="inline-block theme-bg theme-bg-hover text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-300">
+                    Ping Me
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 border-t border-themed">
+        <!-- 12. CUSTOMIZE: Your Name and the year -->
+        <p>&copy; 2025 [Your Name]. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="to-top-button" title="Go To Top" class="hidden fixed bottom-8 right-8 z-50 p-3 bg-slate-700 text-white rounded-full shadow-md hover:bg-slate-800 transition-colors duration-300">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
+    <script>
+        // --- Dark Mode & Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleDarkIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggleDarkIcon.classList.remove('hidden');
+                themeToggleLightIcon.classList.add('hidden');
+            }
+        }
+
+        // Check for saved theme in localStorage or default to light mode
+        const savedTheme = localStorage.getItem('color-theme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+            applyTheme('light'); 
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            localStorage.setItem('color-theme', newTheme);
+            applyTheme(newTheme);
+        });
+
+        // --- Back to Top Button Logic ---
+        const toTopButton = document.getElementById('to-top-button');
+        window.onscroll = () => {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                toTopButton.classList.remove('hidden');
+            } else {
+                toTopButton.classList.add('hidden');
+            }
+        };
+        toTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
