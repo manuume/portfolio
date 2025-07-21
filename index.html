@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- 1. CUSTOMIZE: Your Name in the browser tab -->
     <title>[Your Name] | AI & ML Portfolio</title>
@@ -10,62 +10,76 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             /* -- Light Mode Colors -- */
-            --bg-color-light: #f8fafc; /* Slate 50 */
-            --bg-gradient-end-light: #f1f5f9; /* Slate 100 for gradient */
-            --text-color-light: #334155; /* Slate 700 */
-            --heading-color-light: #0f172a; /* Slate 900 */
-            --border-color-light: #e2e8f0; /* Slate 200 */
-            --card-bg-light: #ffffff; /* White */
-            --social-icon-light: #64748b; /* Slate 500 */
+            --bg-color-light: #fafafa;
+            --bg-gradient-end-light: #f4f4f5;
+            --text-color-light: #374151;
+            --heading-color-light: #111827;
+            --border-color-light: #e5e7eb;
+            --card-bg-light: #ffffff;
+            --social-icon-light: #6b7280;
             --button-secondary-bg-light: #ffffff;
-            --button-secondary-text-light: #334155;
-            --button-secondary-border-light: #cbd5e1;
-            --header-bg-light: rgba(248, 250, 252, 0.8); /* Slate 50 with opacity */
+            --button-secondary-text-light: #374151;
+            --button-secondary-border-light: #d1d5db;
+            --header-bg-light: rgba(250, 250, 250, 0.8);
 
             /* -- Dark Mode Colors -- */
-            --bg-color-dark: #0f172a; /* Slate 900 */
-            --text-color-dark: #cbd5e1; /* Slate 300 */
-            --heading-color-dark: #f1f5f9; /* Slate 100 */
-            --border-color-dark: #334155; /* Slate 700 */
-            --card-bg-dark: #1e293b; /* Slate 800 */
-            --social-icon-dark: #94a3b8; /* Slate 400 */
-            --button-secondary-bg-dark: #1e293b;
-            --button-secondary-text-dark: #cbd5e1;
-            --button-secondary-border-dark: #475569;
-            --header-bg-dark: rgba(15, 23, 42, 0.8); /* Slate 900 with opacity */
+            --bg-color-dark: #0a0a0a;
+            --text-color-dark: #e5e7eb;
+            --heading-color-dark: #f9fafb;
+            --border-color-dark: #374151;
+            --card-bg-dark: #1f2937;
+            --social-icon-dark: #9ca3af;
+            --button-secondary-bg-dark: #1f2937;
+            --button-secondary-text-dark: #e5e7eb;
+            --button-secondary-border-dark: #4b5563;
+            --header-bg-dark: rgba(10, 10, 10, 0.8);
             
-            /* -- Universal Theme Accent Color -- */
-            --theme-color: #6489d7;
-            --theme-color-darker: #4a6fb2;
+            /* -- Enhanced Theme Colors -- */
+            --theme-color: #3b82f6;
+            --theme-color-darker: #2563eb;
+            --theme-gradient: linear-gradient(135deg, #3b82f6, #1d4ed8);
         }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color-light);
-            background-image: linear-gradient(to bottom, var(--bg-color-light), var(--bg-gradient-end-light));
+            background-image: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                            radial-gradient(circle at 40% 80%, rgba(245, 101, 101, 0.05) 0%, transparent 50%);
             color: var(--text-color-light);
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         html.dark body {
             background-color: var(--bg-color-dark);
-            background-image: none;
+            background-image: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 40% 80%, rgba(245, 101, 101, 0.1) 0%, transparent 50%);
             color: var(--text-color-dark);
         }
 
         h1, h2, h3 { color: var(--heading-color-light); }
         html.dark h1, html.dark h2, html.dark h3 { color: var(--heading-color-dark); }
 
-        .bg-card { background-color: var(--card-bg-light); }
-        html.dark .bg-card { background-color: var(--card-bg-dark); }
+        .bg-card { 
+            background-color: var(--card-bg-light);
+            backdrop-filter: blur(10px);
+        }
+        html.dark .bg-card { 
+            background-color: var(--card-bg-dark);
+        }
 
         .border-themed { border-color: var(--border-color-light); }
         html.dark .border-themed { border-color: var(--border-color-dark); }
         
-        .header-bg { background-color: var(--header-bg-light); }
+        .header-bg { 
+            background-color: var(--header-bg-light);
+            backdrop-filter: blur(20px);
+        }
         html.dark .header-bg { background-color: var(--header-bg-dark); }
         
         .social-icon { color: var(--social-icon-light); }
@@ -81,28 +95,146 @@
             color: var(--button-secondary-text-dark);
             border-color: var(--button-secondary-border-dark);
         }
-        html.dark .btn-secondary:hover { background-color: #334155; } /* Slate 700 */
-        .btn-secondary:hover { background-color: #f1f5f9; } /* Slate 100 */
-
 
         .theme-text { color: var(--theme-color); }
-        .theme-bg { background-color: var(--theme-color); }
-        .theme-bg-hover:hover { background-color: var(--theme-color-darker); }
+        .theme-bg { background: var(--theme-gradient); }
+        .theme-bg-hover:hover { 
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            transform: translateY(-1px);
+        }
+
         .social-icon:hover {
             color: var(--theme-color);
+            transform: translateY(-3px) scale(1.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .profile-image {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2));
+            animation: profileFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes profileFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .typing-animation {
+            border-right: 3px solid var(--theme-color);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: var(--theme-color); }
+            51%, 100% { border-color: transparent; }
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
             transform: translateY(-2px);
-            transition: all 0.2s ease-in-out;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        html.dark .skill-tag {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.15));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .animated-bg {
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--theme-gradient);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <header class="header-bg backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-themed">
+    <header class="header-bg fixed top-0 left-0 right-0 z-50 border-b border-themed">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- 2. CUSTOMIZE: Your Name in the header -->
-            <a href="#" class="text-xl font-bold">[Your Name]</a>
+            <a href="#home" class="text-xl font-bold hover:scale-105 transition-transform duration-300">[Your Name]</a>
             
-            <button id="theme-toggle" class="p-2 rounded-full social-icon" title="Toggle theme">
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link hover:text-blue-500">About</a>
+                <a href="#projects" class="nav-link hover:text-blue-500">Projects</a>
+                <a href="#skills" class="nav-link hover:text-blue-500">Skills</a>
+                <a href="#blog" class="nav-link hover:text-blue-500">Blog</a>
+                <a href="#contact" class="nav-link hover:text-blue-500">Contact</a>
+            </div>
+            
+            <button id="theme-toggle" class="p-2 rounded-full social-icon hover:bg-gray-100 dark:hover:bg-gray-800" title="Toggle theme">
                 <svg id="theme-toggle-dark-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                 <svg id="theme-toggle-light-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3.05 4.95a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zm9.9 11.313a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM1.707 10.293a1 1 0 01-1.414 0l.707-.707a1 1 0 111.414 1.414l-.707.707z"></path></svg>
             </button>
@@ -111,113 +243,336 @@
 
     <main class="container mx-auto px-6">
         
-        <section id="home" class="text-center min-h-[90vh] flex flex-col justify-center items-center pt-20">
+        <section id="home" class="text-center min-h-screen flex flex-col justify-center items-center pt-20 relative">
+            <!-- Animated background particles -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute w-2 h-2 bg-blue-500 rounded-full opacity-20 animate-pulse" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+                <div class="absolute w-1 h-1 bg-green-500 rounded-full opacity-30 animate-pulse" style="top: 60%; left: 80%; animation-delay: 2s;"></div>
+                <div class="absolute w-3 h-3 bg-purple-500 rounded-full opacity-15 animate-pulse" style="top: 40%; left: 15%; animation-delay: 4s;"></div>
+            </div>
+
             <!-- 3. CUSTOMIZE: Your profile picture -->
-            <img src="profile.jpg" alt="Profile Picture" class="w-32 h-32 rounded-full mb-6 border-4 border-white shadow-lg">
+            <div class="profile-image p-1 rounded-full mb-8">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Profile Picture" class="w-40 h-40 rounded-full shadow-2xl">
+            </div>
             
-            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
-                <!-- 4. CUSTOMIZE: Your Name in the headline -->
-                Hello, I'm <span class="theme-text">[Your Name]</span>
-            </h1>
+            <div class="typing-animation mb-4">
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                    <!-- 4. CUSTOMIZE: Your Name in the headline -->
+                    Hi, I'm <span class="theme-text animated-bg bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 bg-clip-text text-transparent">[Your Name]</span>
+                </h1>
+            </div>
+            
             <!-- 5. CUSTOMIZE: Your one-line description -->
-            <p class="text-xl mb-6 max-w-2xl">A Master's student passionate about building intelligent systems with AI and Machine Learning.</p>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl font-light">AI/ML Engineer crafting intelligent solutions for tomorrow's challenges</p>
             
             <!-- 6. CUSTOMIZE: Your profile links -->
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="#" target="_blank" class="social-icon" title="GitHub"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg></a>
-                <a href="#" target="_blank" class="social-icon" title="LinkedIn"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                <a href="#" target="_blank" class="social-icon" title="LeetCode"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0 .12 2.421l.436 1.323.023.065.023.065a5.416 5.416 0 0 0 .97 1.435l.023.023.023.023a5.265 5.265 0 0 0 1.898 1.213l1.384.437a5.343 5.343 0 0 0 2.421.12l4.126-3.854 5.788-5.409a1.374 1.374 0 0 0 .438-.961 1.374 1.374 0 0 0-.438-.961l-5.409-5.788A1.374 1.374 0 0 0 13.483 0zm0 2.748l4.432 4.726-5.788 5.409-4.432-4.726zm-1.374 8.245l-4.126 3.854-1.095-.333a2.71 2.71 0 0 1-1.435-.97l-.023-.024a2.71 2.71 0 0 1-.97-1.435l-.024-.023a2.66 2.66 0 0 1-.12-1.21l.333-1.095z"/></svg></a>
-                <a href="#" target="_blank" class="social-icon" title="Kaggle"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19.95,9.66L15.2,12l4.75,2.34l-2.4,4.01l-5.6-3.89l-2.9,5.88h-4.3L9.65,12,4.8,9.66,2.4,13.67,4.8,24h4.3l2.9-8.25,5.6,3.89Z"/></svg></a>
-                <a href="#blog" class="social-icon" title="Blog"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M20 3H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h7v3H8v2h8v-2h-3v-3h7c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 14V5h16l.002 9H4z"></path><path d="M6 7h12v2H6zm0 4h12v2H6z"></path></svg></a>
+            <div class="flex justify-center space-x-6 mb-12">
+                <a href="#" target="_blank" class="social-icon p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800" title="GitHub">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                </a>
+                <a href="#" target="_blank" class="social-icon p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800" title="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="#" target="_blank" class="social-icon p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800" title="Kaggle">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.336"/></svg>
+                </a>
             </div>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#projects" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">View My Work</a>
-                <a href="#blog" class="btn-secondary border-2 font-semibold py-3 px-6 rounded-lg transition-colors duration-300">View My Writings</a>
-                <a href="resume.pdf" target="_blank" class="theme-bg theme-bg-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">Download Resume</a>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="#projects" class="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg">
+                    View My Work
+                </a>
+                <a href="#blog" class="btn-secondary border-2 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg">
+                    Read My Blog
+                </a>
+                <a href="resume.pdf" target="_blank" class="theme-bg theme-bg-hover text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg">
+                    Download Resume
+                </a>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="scroll-indicator absolute bottom-8">
+                <svg class="w-6 h-6 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
             </div>
         </section>
 
-        <section id="about" class="py-24">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-4">About Me</h2>
-                <!-- 7. CUSTOMIZE: The paragraphs about you. -->
-                <p class="text-lg leading-relaxed mb-4">I'm currently pursuing my Master's in Artificial Intelligence at <strong>[Your University]</strong>. My fascination with data and algorithms drives me to explore everything from natural language processing to computer vision.</p>
-                <p class="text-lg leading-relaxed">I believe in a first-principles approach to problem-solving and enjoy the process of transforming a complex challenge into a simple, elegant, and intelligent solution.</p>
+        <section id="about" class="py-24 fade-in">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold mb-8 text-center">About Me</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <!-- 7. CUSTOMIZE: The paragraphs about you. -->
+                        <p class="text-lg leading-relaxed mb-6">I'm currently pursuing my Master's in Artificial Intelligence at <strong>[Your University]</strong>. My fascination with data and algorithms drives me to explore everything from natural language processing to computer vision.</p>
+                        <p class="text-lg leading-relaxed mb-6">I believe in a first-principles approach to problem-solving and enjoy the process of transforming complex challenges into elegant, intelligent solutions.</p>
+                        <p class="text-lg leading-relaxed">When I'm not coding, you'll find me exploring the latest research papers, contributing to open-source projects, or sharing knowledge through technical writing.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-card p-6 rounded-2xl border border-themed shadow-lg">
+                            <h3 class="font-semibold text-lg mb-2">Education</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Master's in AI • [Your University]</p>
+                        </div>
+                        <div class="bg-card p-6 rounded-2xl border border-themed shadow-lg">
+                            <h3 class="font-semibold text-lg mb-2">Focus Areas</h3>
+                            <p class="text-gray-600 dark:text-gray-300">NLP • Computer Vision • Deep Learning</p>
+                        </div>
+                        <div class="bg-card p-6 rounded-2xl border border-themed shadow-lg">
+                            <h3 class="font-semibold text-lg mb-2">Currently</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Building AI solutions • Research • Writing</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="projects" class="py-24 border-t border-themed">
-            <h2 class="text-3xl font-bold text-center mb-4">Featured Projects</h2>
-            <p class="text-center mb-12">A selection of my work.</p>
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- New Skills Section -->
+        <section id="skills" class="py-24 border-t border-themed fade-in">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-4">Skills & Technologies</h2>
+                <p class="text-center mb-12 text-lg">The tools and technologies I work with</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold mb-4">Languages</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">Python</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">JavaScript</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">SQL</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">R</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold mb-4">Frameworks</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">TensorFlow</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">PyTorch</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">Scikit-learn</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">React</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold mb-4">Tools</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">Docker</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">AWS</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">Git</span>
+                            <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium">Jupyter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 border-t border-themed fade-in">
+            <h2 class="text-4xl font-bold text-center mb-4">Featured Projects</h2>
+            <p class="text-center mb-16 text-lg">Some of my recent work and experiments</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 
                 <!-- 8. CUSTOMIZE: A project card. Copy-paste this whole block to add more projects. -->
-                <div class="bg-card p-6 rounded-2xl border-2 border-themed shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
-                    <img src="project1.png" alt="Project 1" class="rounded-lg mb-4 h-48 w-full object-cover">
-                    <h3 class="text-xl font-bold mb-2">Project Title: Sentiment Analysis Model</h3>
-                    <p class="mb-4 flex-grow">Classified text reviews using an RNN, providing insights into customer opinions.</p>
-                    <div class="mt-auto flex gap-4">
-                        <!-- Link to your demo video -->
-                        <a href="#" target="_blank" class="w-1/2 text-center theme-bg theme-bg-hover text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">Demo</a>
-                        <!-- Link to your GitHub repo -->
-                        <a href="#" target="_blank" class="w-1/2 text-center btn-secondary border-2 font-semibold py-2 px-4 rounded-lg transition-colors duration-300">View Code</a>
+                <div class="project-card bg-card p-8 rounded-3xl border border-themed shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 flex flex-col group">
+                    <div class="relative overflow-hidden rounded-2xl mb-6">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop" alt="Project 1" class="h-48 w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sentiment Analysis Model</h3>
+                    <p class="mb-6 flex-grow text-gray-600 dark:text-gray-300">Advanced RNN-based model for analyzing customer sentiment with 94% accuracy. Deployed using Flask API.</p>
+                    <div class="flex gap-3">
+                        <a href="#" target="_blank" class="flex-1 text-center theme-bg theme-bg-hover text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300">Demo</a>
+                        <a href="#" target="_blank" class="flex-1 text-center btn-secondary border-2 font-semibold py-3 px-4 rounded-xl transition-all duration-300">Code</a>
                     </div>
                 </div>
 
                 <!-- 9. CUSTOMIZE: Second project card. -->
-                <div class="bg-card p-6 rounded-2xl border-2 border-themed shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
-                    <img src="project2.png" alt="Project 2" class="rounded-lg mb-4 h-48 w-full object-cover">
-                    <h3 class="text-xl font-bold mb-2">Project Title: Image Classification CNN</h3>
-                    <p class="mb-4 flex-grow">Built a CNN from scratch to classify images with high accuracy using data augmentation.</p>
-                    <div class="mt-auto flex gap-4">
-                        <!-- Link to your demo video -->
-                        <a href="#" target="_blank" class="w-1/2 text-center theme-bg theme-bg-hover text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">Demo</a>
-                        <!-- Link to your GitHub repo -->
-                        <a href="#" target="_blank" class="w-1/2 text-center btn-secondary border-2 font-semibold py-2 px-4 rounded-lg transition-colors duration-300">View Code</a>
+                <div class="project-card bg-card p-8 rounded-3xl border border-themed shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 flex flex-col group">
+                    <div class="relative overflow-hidden rounded-2xl mb-6">
+                        <img src="https://images.unsplash.com/photo-1555949963-f37b8d0c3ddc?w=400&h=250&fit=crop" alt="Project 2" class="h-48 w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Image Classification CNN</h3>
+                    <p class="mb-6 flex-grow text-gray-600 dark:text-gray-300">Custom CNN architecture achieving 96% accuracy on CIFAR-10 dataset with advanced data augmentation techniques.</p>
+                    <div class="flex gap-3">
+                        <a href="#" target="_blank" class="flex-1 text-center theme-bg theme-bg-hover text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300">Demo</a>
+                        <a href="#" target="_blank" class="flex-1 text-center btn-secondary border-2 font-semibold py-3 px-4 rounded-xl transition-all duration-300">Code</a>
+                    </div>
+                </div>
+
+                <!-- Additional project card -->
+                <div class="project-card bg-card p-8 rounded-3xl border border-themed shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 flex flex-col group">
+                    <div class="relative overflow-hidden rounded-2xl mb-6">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Project 3" class="h-48 w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">ML Pipeline Automation</h3>
+                    <p class="mb-6 flex-grow text-gray-600 dark:text-gray-300">End-to-end MLOps pipeline with automated model training, validation, and deployment using Docker and AWS.</p>
+                    <div class="flex gap-3">
+                        <a href="#" target="_blank" class="flex-1 text-center theme-bg theme-bg-hover text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300">Demo</a>
+                        <a href="#" target="_blank" class="flex-1 text-center btn-secondary border-2 font-semibold py-3 px-4 rounded-xl transition-all duration-300">Code</a>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <section id="blog" class="py-24 border-t border-themed">
-            <h2 class="text-3xl font-bold text-center mb-4">My Thoughts & Writings</h2>
-            <p class="text-center mb-12">Sharing what I've learned.</p>
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <section id="blog" class="py-24 border-t border-themed fade-in">
+            <h2 class="text-4xl font-bold text-center mb-4">Latest Articles</h2>
+            <p class="text-center mb-16 text-lg">Sharing insights and learnings from my AI journey</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 <!-- 10. CUSTOMIZE: A blog post card. Copy-paste this block to add more posts. -->
-                <a href="#" target="_blank" class="block bg-card p-6 rounded-2xl border-2 border-themed shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                    <h3 class="text-xl font-bold mb-2">Understanding Transformers from Scratch</h3>
-                    <p class="mb-4">A deep dive into the attention mechanism that powers models like GPT-4 and BERT.</p>
-                    <span class="font-semibold theme-text hover:underline">Read More &rarr;</span>
+                <a href="#" target="_blank" class="block bg-card p-8 rounded-3xl border border-themed shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            AI
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-500 dark:text-gray-400">5 min read • Jan 15, 2025</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 group-hover:text-blue-500 transition-colors">Understanding Transformers from Scratch</h3>
+                    <p class="mb-4 text-gray-600 dark:text-gray-300">A comprehensive deep dive into the attention mechanism that powers modern language models like GPT and BERT.</p>
+                    <div class="flex items-center font-semibold theme-text group-hover:translate-x-2 transition-transform">
+                        Read More 
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
                 </a>
-                 <!-- Add another blog card here -->
+
+                <a href="#" target="_blank" class="block bg-card p-8 rounded-3xl border border-themed shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            ML
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-500 dark:text-gray-400">8 min read • Jan 10, 2025</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 group-hover:text-blue-500 transition-colors">Building Production-Ready ML Pipelines</h3>
+                    <p class="mb-4 text-gray-600 dark:text-gray-300">Best practices for creating scalable and maintainable machine learning workflows in production environments.</p>
+                    <div class="flex items-center font-semibold theme-text group-hover:translate-x-2 transition-transform">
+                        Read More 
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="#" target="_blank" class="block bg-card p-8 rounded-3xl border border-themed shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            CV
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-500 dark:text-gray-400">6 min read • Jan 5, 2025</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 group-hover:text-blue-500 transition-colors">Computer Vision in 2025</h3>
+                    <p class="mb-4 text-gray-600 dark:text-gray-300">Exploring the latest trends and breakthroughs in computer vision, from foundation models to real-world applications.</p>
+                    <div class="flex items-center font-semibold theme-text group-hover:translate-x-2 transition-transform">
+                        Read More 
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </a>
             </div>
         </section>
 
-        <section id="contact" class="py-24 border-t border-themed">
-            <div class="text-center max-w-2xl mx-auto">
-                <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
-                <p class="text-lg mb-8">I'm always open to discussing new projects, creative ideas, or opportunities.</p>
+        <!-- New Testimonials/Achievements Section -->
+        <section id="achievements" class="py-24 border-t border-themed fade-in">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-16">Achievements & Recognition</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-card p-8 rounded-3xl border border-themed shadow-lg">
+                        <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Top 5% Kaggle Competitor</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Achieved expert tier with multiple medal-winning submissions in ML competitions</p>
+                    </div>
+                    
+                    <div class="bg-card p-8 rounded-3xl border border-themed shadow-lg">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v6.5A1.5 1.5 0 0116.5 16H3.5A1.5 1.5 0 012 14.5V8a2 2 0 012-2h2zm10-1a1 1 0 00-1-1V5a1 1 0 00-1-1H6a1 1 0 00-1 1v4a1 1 0 001 1h8a1 1 0 001-1V5z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Research Publications</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Published 3 papers in peer-reviewed conferences on deep learning and NLP</p>
+                    </div>
+                    
+                    <div class="bg-card p-8 rounded-3xl border border-themed shadow-lg">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Open Source Contributions</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Active contributor to 10+ ML libraries with 1000+ GitHub stars combined</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 border-t border-themed fade-in">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold mb-6">Let's Build Something Amazing</h2>
+                <p class="text-xl mb-12 text-gray-600 dark:text-gray-300">I'm always excited to discuss new projects, innovative ideas, or opportunities to push the boundaries of AI.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-card p-8 rounded-3xl border border-themed shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Email Me</h3>
+                        <p class="text-gray-600 dark:text-gray-300">your.email@example.com</p>
+                    </div>
+                    
+                    <div class="bg-card p-8 rounded-3xl border border-themed shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Connect on LinkedIn</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Let's connect professionally</p>
+                    </div>
+                </div>
+                
                 <!-- 11. CUSTOMIZE: Your email address -->
-                <a href="mailto:your.email@example.com" class="inline-block theme-bg theme-bg-hover text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-300">
-                    Ping Me
+                <a href="mailto:your.email@example.com" class="inline-block theme-bg theme-bg-hover text-white font-bold py-5 px-10 rounded-2xl text-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Start a Conversation
                 </a>
             </div>
         </section>
     </main>
 
-    <footer class="text-center py-6 border-t border-themed">
+    <footer class="text-center py-8 border-t border-themed bg-card">
         <!-- 12. CUSTOMIZE: Your Name and the year -->
-        <p>&copy; 2025 [Your Name]. All Rights Reserved.</p>
+        <p class="text-gray-600 dark:text-gray-300">&copy; 2025 [Your Name]. Crafted with passion and lots of coffee ☕</p>
+        <div class="flex justify-center space-x-6 mt-4">
+            <a href="#" class="social-icon hover:text-blue-500 transition-colors">GitHub</a>
+            <a href="#" class="social-icon hover:text-blue-500 transition-colors">LinkedIn</a>
+            <a href="#" class="social-icon hover:text-blue-500 transition-colors">Twitter</a>
+        </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="to-top-button" title="Go To Top" class="hidden fixed bottom-8 right-8 z-50 p-3 bg-slate-700 text-white rounded-full shadow-md hover:bg-slate-800 transition-colors duration-300">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    <!-- Enhanced Back to Top Button -->
+    <button id="to-top-button" title="Go To Top" class="hidden fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
     </button>
 
     <script>
-        // --- Dark Mode & Theme Toggle Logic ---
+        // --- Enhanced Dark Mode & Theme Toggle Logic ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -234,13 +589,10 @@
             }
         }
 
-        // Check for saved theme in localStorage or default to light mode
+        // Check for saved theme preference or default to system preference
         const savedTheme = localStorage.getItem('color-theme');
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        } else {
-            applyTheme('light'); 
-        }
+        const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        applyTheme(savedTheme || systemPreference);
 
         themeToggleBtn.addEventListener('click', function() {
             const isDark = document.documentElement.classList.contains('dark');
@@ -249,18 +601,81 @@
             applyTheme(newTheme);
         });
 
-        // --- Back to Top Button Logic ---
+        // --- Smooth Scrolling for Navigation ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // --- Scroll Animations ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- Enhanced Back to Top Button Logic ---
         const toTopButton = document.getElementById('to-top-button');
-        window.onscroll = () => {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 300) {
                 toTopButton.classList.remove('hidden');
             } else {
                 toTopButton.classList.add('hidden');
             }
-        };
-        toTopButton.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            lastScrollTop = scrollTop;
         });
+
+        toTopButton.addEventListener('click', () => {
+            window.scrollTo({ 
+                top: 0, 
+                behavior: 'smooth' 
+            });
+        });
+
+        // --- Typing Animation ---
+        const typingElement = document.querySelector('.typing-animation h1');
+        if (typingElement) {
+            // Simple typing effect could be added here if desired
+        }
+
+        // --- Navbar Background on Scroll ---
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.borderBottomWidth = '1px';
+            } else {
+                header.style.backdropFilter = 'blur(10px)';
+                header.style.borderBottomWidth = '1px';
+            }
+        });
+
+        // --- Mobile Menu (if needed) ---
+        // Add mobile menu toggle functionality here if you want to add a hamburger menu
     </script>
 </body>
 </html>
