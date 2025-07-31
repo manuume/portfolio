@@ -94,11 +94,7 @@
         .scroll-section {
             overflow-y: auto;
             padding: 2rem 2.5rem;
-            flex: 1;
-        }
-        
-        .scroll-section#projects {
-            border-bottom: 1px solid var(--border-color);
+            flex: 1; /* This will now make the projects section fill the whole column */
         }
 
         /* --- Custom Scrollbar Styles --- */
@@ -130,8 +126,6 @@
             .left-column { border-right: none; border-bottom: 1px solid var(--border-color); overflow-y: visible; height: auto; }
             .right-column { height: auto; }
             .scroll-section { overflow-y: visible; height: auto; flex: none; }
-            .scroll-section#projects { border-bottom: none; }
-            #blogs { border-top: 1px solid var(--border-color); }
         }
 
         /* --- Elements --- */
@@ -168,7 +162,7 @@
         a { color: var(--accent-color); text-decoration: none; }
         a:hover { text-decoration: none; }
         
-        .project-links, .blog-links { margin-top: 1rem; }
+        .project-links { margin-top: 1rem; }
         
         .action-link {
             display: inline-block;
@@ -277,7 +271,7 @@
             </section>
         </div>
 
-        <!-- Right Column: Projects and Blogs -->
+        <!-- Right Column: Projects -->
         <div class="right-column">
             <section id="projects" class="scroll-section">
                 <h2>Projects</h2>
@@ -297,22 +291,9 @@
                     <li><strong>Project Delta</strong> - A final project example. <div class="project-links"><a href="#demo" class="action-link">Demo</a><a href="#code" class="action-link">Code</a></div></li>
                     <li><strong>Project Epsilon</strong> - More content to demonstrate scrolling. <div class="project-links"><a href="#demo" class="action-link">Demo</a><a href="#code" class="action-link">Code</a></div></li>
                     <li><strong>Project Zeta</strong> - Added to ensure scrollbar appears. <div class="project-links"><a href="#demo" class="action-link">Demo</a><a href="#code" class="action-link">Code</a></div></li>
-                </ul>
-            </section>
-
-            <section id="blogs" class="scroll-section">
-                <h2>Blogs</h2>
-                <ul>
-                    <!-- For each blog, add the link to the post in the href and the title inside the <strong> tag -->
-                    <li>
-                        <a href="#blog-link-1">
-                            <strong>Blog Post Title 1</strong> - A brief summary.
-                        </a>
-                    </li>
-                    <li><a href="#blog-link-2"><strong>Blog Post Title 2</strong> - A brief summary.</a></li>
-                    <li><a href="#blog-link-3"><strong>Blog Post Title 3</strong> - A brief summary.</a></li>
-                    <li><a href="#blog-link-4"><strong>Blog Post Title 4</strong> - More content for scrolling.</a></li>
-                    <li><a href="#blog-link-5"><strong>Blog Post Title 5</strong> - Added to ensure scrollbar appears.</a></li>
+                    <li><strong>Project Eta</strong> - This should be enough to scroll now. <div class="project-links"><a href="#demo" class="action-link">Demo</a><a href="#code" class="action-link">Code</a></div></li>
+                    <li><strong>Project Theta</strong> - And one more for good measure. <div class="project-links"><a href="#demo" class="action-link">Demo</a><a href="#code" class="action-link">Code</a></div></li>
+                    <li><strong>Project Iota</strong> - The scrollbar should definitely be visible. <div class="project-links"><a href="#demo" class="action-link">Demo</a><a href="#code" class="action-link">Code</a></div></li>
                 </ul>
             </section>
         </div>
