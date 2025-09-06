@@ -3,301 +3,625 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manohar</title>
+    <title>Manohar - AI/ML Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/32/6821/6821379.png" type="image/png">
     <style>
         /* --- THEME VARIABLES --- */
         :root {
             /* Dark Mode (Default) */
-            --bg-color: #1a1a1a;
-            --surface-color: #242424;
-            --primary-text-color: #e0e0e0;
-            --secondary-text-color: #b0b0b0;
-            --border-color: #3a3a3a;
-            --accent-color: #f0b973; /* Warm Amber */
-            --link-bg: #3a3a3a;
+            --bg-color: #0a0a0a;
+            --surface-color: #1a1a1a;
+            --surface-hover: #252525;
+            --primary-text-color: #e8e8e8;
+            --secondary-text-color: #a8a8a8;
+            --border-color: #2a2a2a;
+            --accent-color: #f0b973;
+            --accent-hover: #ffcc88;
+            --link-bg: #2a2a2a;
             --link-hover-bg: #f0b973;
-            --link-hover-text: #1a1a1a;
-            --scrollbar-thumb: #4f4f4f;
+            --link-hover-text: #0a0a0a;
+            --scrollbar-track: #1a1a1a;
+            --scrollbar-thumb: #3a3a3a;
             --scrollbar-thumb-hover: #f0b973;
+            --success-color: #4ade80;
+            --shadow-color: rgba(0, 0, 0, 0.5);
         }
-
         body.light-mode {
             /* Light Mode */
-            --bg-color: #f5f5f5;
+            --bg-color: #fafafa;
             --surface-color: #ffffff;
-            --primary-text-color: #2c2c2c;
-            --secondary-text-color: #555555;
-            --border-color: #e0e0e0;
-            --accent-color: #d98c3a; /* Deeper Amber for contrast */
-            --link-bg: #e0e0e0;
+            --surface-hover: #f5f5f5;
+            --primary-text-color: #1a1a1a;
+            --secondary-text-color: #666666;
+            --border-color: #e5e5e5;
+            --accent-color: #d98c3a;
+            --accent-hover: #c47a2a;
+            --link-bg: #f0f0f0;
             --link-hover-bg: #d98c3a;
             --link-hover-text: #ffffff;
+            --scrollbar-track: #f5f5f5;
             --scrollbar-thumb: #cccccc;
             --scrollbar-thumb-hover: #d98c3a;
+            --success-color: #22c55e;
+            --shadow-color: rgba(0, 0, 0, 0.1);
         }
-
-        /* --- Basic Setup --- */
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'IBM Plex Mono', monospace;
-            background-color: var(--bg-color);
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--surface-color) 100%);
             color: var(--primary-text-color);
-            margin: 0;
-            padding: 2rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            box-sizing: border-box;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+            padding: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow-x: hidden;
         }
-
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    var(--border-color) 2px,
+                    var(--border-color) 4px
+                );
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
         /* --- Main Container --- */
         .container {
             display: flex;
-            flex-wrap: wrap;
             width: 100%;
-            max-width: 1200px;
-            height: 100%;
-            max-height: 800px;
-            background-color: var(--surface-color);
+            max-width: 1400px;
+            height: 90vh;
+            max-height: 900px;
+            background: var(--surface-color);
             border: 1px solid var(--border-color);
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            box-shadow:
+                0 20px 40px var(--shadow-color),
+                0 0 0 1px var(--border-color);
             overflow: hidden;
-            border-radius: 8px;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            border-radius: 12px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
-
+        .container:hover {
+            box-shadow:
+                0 25px 50px var(--shadow-color),
+                0 0 0 1px var(--accent-color);
+        }
         /* --- Columns --- */
         .left-column {
-            padding: 2rem 2.5rem;
-            box-sizing: border-box;
+            width: 380px;
+            padding: 2.5rem;
             overflow-y: auto;
-            height: 100%;
-            flex: 1;
-            min-width: 300px;
             border-right: 1px solid var(--border-color);
             position: relative;
+            background: linear-gradient(180deg, var(--surface-color) 0%, rgba(26, 26, 26, 0.8) 100%);
         }
-
         .right-column {
-            flex: 2;
-            min-width: 300px;
+            flex: 1;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-        }
-        
-        /* --- Scrollable Sections --- */
-        .scroll-section {
-            overflow-y: auto;
-            padding: 2rem 2.5rem;
-            flex: 1; /* This will now make the projects section fill the whole column */
-        }
-
-        /* --- Custom Scrollbar Styles --- */
-        .left-column::-webkit-scrollbar,
-        .scroll-section::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .left-column::-webkit-scrollbar-track,
-        .scroll-section::-webkit-scrollbar-track {
             background: var(--surface-color);
         }
-
-        .left-column::-webkit-scrollbar-thumb,
-        .scroll-section::-webkit-scrollbar-thumb {
-            background-color: var(--scrollbar-thumb);
-            border-radius: 4px;
+        /* --- Scrollable Section --- */
+        .scroll-section {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2.5rem;
+            height: 100%;
         }
-        
-        .left-column::-webkit-scrollbar-thumb:hover,
-        .scroll-section::-webkit-scrollbar-thumb:hover {
-            background-color: var(--scrollbar-thumb-hover);
+        /* --- Scrollbar Styles --- */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
         }
-
-        /* --- Responsive Stacking --- */
-        @media (max-width: 768px) {
-            body { align-items: flex-start; padding: 1rem; }
-            .container { flex-direction: column; height: auto; max-height: none; }
-            .left-column { border-right: none; border-bottom: 1px solid var(--border-color); overflow-y: visible; height: auto; }
-            .right-column { height: auto; }
-            .scroll-section { overflow-y: visible; height: auto; flex: none; }
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+            border-radius: 5px;
         }
-
-        /* --- Elements --- */
-        h1, h2 {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.75rem;
-            margin-top: 0;
-            color: var(--primary-text-color);
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--scrollbar-thumb-hover);
+        }
+        /* Firefox scrollbar */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+        }
+        /* --- Typography --- */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            position: relative;
+            animation: slideInFromLeft 0.6s ease;
+        }
+        h1::after {
+            content: '_';
+            animation: blink 1s infinite;
+            color: var(--accent-color);
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        h2 {
+            font-size: 1.3rem;
             font-weight: 500;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        h1 { font-size: 2rem; margin-bottom: 1.5rem; }
-        h2 { font-size: 1.3rem; margin-bottom: 1.5rem; font-weight: 400; }
-
-        
-
-        img.profile-photo {
-            width: 90px;
-            height: 90px;
+        /* --- Profile Photo --- */
+        .profile-photo {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 2px solid var(--accent-color);
+            border: 3px solid var(--accent-color);
             margin-bottom: 2rem;
             display: block;
-            object-fit: cover;         
+            object-fit: cover;
             object-position: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(240, 185, 115, 0.3);
+            animation: fadeIn 0.8s ease;
         }
-        
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(240, 185, 115, 0.5);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        /* --- Text Styles --- */
         p {
             line-height: 1.8;
-            margin: 0 0 2rem 0;
+            margin-bottom: 1.5rem;
             color: var(--secondary-text-color);
+            animation: fadeIn 0.8s ease 0.2s both;
         }
-
-        ul { list-style-type: none; padding: 0; margin: 0; }
-        li { margin-bottom: 1.75rem; }
-        .right-column li { margin-bottom: 2rem; }
-
-        a { color: var(--accent-color); text-decoration: none; }
-        a:hover { text-decoration: none; }
-        
-        .project-links { margin-top: 1rem; }
-        
-        .action-link {
-            display: inline-block;
-            background-color: var(--link-bg);
-            color: var(--primary-text-color);
-            padding: 0.4rem 1rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 400;
+        /* --- Lists --- */
+        ul {
+            list-style: none;
+        }
+        li {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--surface-hover);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease both;
+            animation-delay: calc(var(--i, 0) * 0.1s);
+        }
+        li:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(240, 185, 115, 0.1);
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        /* --- Links --- */
+        a {
+            color: var(--accent-color);
             text-decoration: none;
-            margin-right: 0.75rem;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--accent-hover);
+        }
+        .project-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--link-bg);
+            color: var(--primary-text-color);
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        .action-link svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+        }
+        .action-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-color);
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+        .action-link span {
+            position: relative;
+            z-index: 1;
         }
         .action-link:hover {
-            background-color: var(--link-hover-bg);
             color: var(--link-hover-text);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
         }
-
-        /* --- Connection Styles --- */
-        .social-icons { display: flex; gap: 20px; margin-bottom: 1.5rem; }
-        .social-icons a { color: var(--secondary-text-color); transition: color 0.2s ease; }
-        .social-icons a:hover { color: var(--accent-color); }
-        .social-icons svg { width: 24px; height: 24px; fill: currentColor; }
-
-        .contact-details { display: flex; flex-direction: column; gap: 15px; color: var(--secondary-text-color); font-size: 0.9rem; }
-        .contact-item { display: flex; align-items: center; gap: 12px; }
-        .contact-item svg { width: 20px; height: 20px; fill: var(--secondary-text-color); }
-        
+        .action-link:hover::before {
+            left: 0;
+        }
+        /* --- Project Styles --- */
+        .project-title {
+            color: var(--primary-text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .project-description {
+            color: var(--secondary-text-color);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        /* --- Social Icons --- */
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .social-icons a {
+            color: var(--secondary-text-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--link-bg);
+            border: 1px solid var(--border-color);
+        }
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(240, 185, 115, 0.2);
+        }
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        /* --- Contact Details --- */
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: var(--link-bg);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            color: var(--secondary-text-color);
+            font-size: 0.9rem;
+        }
+        .contact-item:hover {
+            border-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent-color);
+        }
         /* --- Theme Toggle --- */
         .theme-toggle {
             position: absolute;
             top: 2rem;
-            right: 2.5rem;
+            right: 2rem;
             cursor: pointer;
             color: var(--secondary-text-color);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: var(--link-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            z-index: 10;
         }
         .theme-toggle:hover {
             color: var(--accent-color);
+            transform: rotate(180deg);
+            border-color: var(--accent-color);
         }
         .theme-toggle svg {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             fill: currentColor;
         }
         .theme-toggle .icon-sun { display: none; }
         body.light-mode .theme-toggle .icon-sun { display: block; }
         body.light-mode .theme-toggle .icon-moon { display: none; }
-
+        /* --- Status Indicator --- */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid var(--success-color);
+            border-radius: 20px;
+            color: var(--success-color);
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        .status-indicator::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--success-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        /* --- Responsive Design --- */
+        @media (max-width: 968px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+                max-height: none;
+            }
+            .left-column {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                max-height: none;
+            }
+            .right-column {
+                height: auto;
+            }
+            .scroll-section {
+                height: auto;
+                overflow-y: visible;
+            }
+        }
+        @media (max-width: 640px) {
+            body {
+                padding: 0.5rem;
+            }
+            .container {
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .left-column,
+            .scroll-section {
+                padding: 1.5rem;
+            }
+            .social-icons {
+                gap: 1rem;
+            }
+            li {
+                padding: 1rem;
+            }
+        }
+        /* --- Loading Animation --- */
+        @keyframes loadIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .container > * {
+            animation: loadIn 0.6s ease both;
+        }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Left Column: Correct Order -->
         <div class="left-column">
             <div class="theme-toggle" id="theme-toggle" title="Toggle Theme">
                 <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.64 5.64c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.06 1.06c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41L5.64 5.64zm12.73 12.73c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.06 1.06c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41l-1.06-1.06zM5.64 18.36l-1.06-1.06c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0l1.06 1.06c.39.39.39 1.02 0 1.41s-1.02.39-1.41 0zm12.73-12.73l-1.06-1.06c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0l1.06 1.06c.39.39.39 1.02 0 1.41s-1.02.39-1.41 0z"/></svg>
                 <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.3 4.9c.4-.2.6-.7.4-1.1-.2-.4-.7-.6-1.1-.4C7.2 5.4 4 9.2 4 13.5 4 19.1 8.9 24 14.5 24c4.3 0 8.1-3.2 10.1-7.6.2-.4 0-.9-.4-1.1-.4-.2-.9 0-1.1.4-1.7 3.6-5.2 6.2-9.2 6.2-4.9 0-8.9-4-8.9-8.9 0-3.9 2.5-7.3 6.2-8.8z"/></svg>
             </div>
             <header>
-                <!-- Add your name here -->
                 <h1>Manohar</h1>
+                <div class="status-indicator">Available for opportunities</div>
             </header>
-            
-            <!-- Add a URL to your photo in the src attribute below -->
             <img src="https://raw.githubusercontent.com/manuume/bark-ai/7e12ecc8e1c6cfaabaab375c0ddffa36d0f1e5c4/src/assets/IMG-20241212-WA0098%20(1).jpg" alt="Profile Photo of Manohar" class="profile-photo">
             <section id="about">
                 <h2>About</h2>
-                <!-- Add your bio here -->
                 <p>
-                   I'm an AI and Machine Learning developer specializing in Generative AI,with expertise in RAG systems,fine-tuning LLMs,and building AI-powered applications.I'm actively seeking ML/GenAI internship opportunities...
+                    I'm an AI and Machine Learning developer specializing in Generative AI, with expertise in RAG systems, fine-tuning LLMs, and building AI-powered applications. I'm actively seeking ML/GenAI internship opportunities.
                 </p>
             </section>
-
             <section id="resume">
                 <h2>Resume</h2>
-                <ul>
-                    <!-- Add a URL to your resume PDF in the href attribute below -->
-                    <li><a href="https://drive.google.com/uc?export=download&id=1HZIOc9nZ7X75nPXNSt2yMg6RE1WXehV1" target="_blank" class="action-link">View / Download</a>
-                </ul>
+                <a href="https://drive.google.com/uc?export=download&id=1HZIOc9nZ7X75nPXNSt2yMg6RE1WXehV1" target="_blank" class="action-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span>Download CV</span>
+                </a>
             </section>
-
             <section id="connections">
-                <h2>Connections</h2>
+                <h2>Connect</h2>
                 <div class="social-icons">
-                    <!-- Add your GitHub profile URL in the href attribute below -->
-                    <a href="https://github.com/manuume" target="_blank" title="GitHub"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
-                    <!-- Add your LinkedIn profile URL in the href attribute below -->
-                    <a href="#linkedin" target="_blank" title="LinkedIn"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-                    <!-- Add your Hugging Face profile URL in the href attribute below -->
-                    <a href="https://huggingface.co/manohar3181" target="_blank" title="Hugging Face"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.34 8.61a1.34 1.34 0 0 0-1.34-1.34h-1.3v-.3a1.34 1.34 0 0 0-1.33-1.34h-.3a1.34 1.34 0 0 0-1.34 1.34v.3h-7.46v-.3a1.34 1.34 0 0 0-1.34-1.34h-.3a1.34 1.34 0 0 0-1.33 1.34v.3H4a1.34 1.34 0 0 0-1.34 1.34v.3a1.34 1.34 0 0 0 1.34 1.34h.3a1.34 1.34 0 0 0 1.33-1.34v-.3h1.3v9.4a1.34 1.34 0 0 0 1.34 1.33h.3a1.34 1.34 0 0 0 1.34-1.33v-4.03h4.82v4.03a1.34 1.34 0 0 0 1.34 1.33h.3a1.34 1.34 0 0 0 1.34-1.33v-9.4h1.3v.3a1.34 1.34 0 0 0 1.33 1.34h.3a1.34 1.34 0 0 0 1.34-1.34V8.6zm-8.8 6.67h-3.48v-4.7h3.48zm-2.4-6.02a1.06 1.06 0 1 1-1.05-1.06 1.06 1.06 0 0 1 1.06 1.06m3.45 0a1.06 1.06 0 1 1-1.05-1.06 1.06 1.06 0 0 1 1.05 1.06"/></svg></a>
+                    <a href="https://github.com/manuume" target="_blank" title="GitHub">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    </a>
+                    <a href="#" target="_blank" title="LinkedIn">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                    </a>
+                    <a href="https://huggingface.co/manohar3181" target="_blank" title="Hugging Face">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.34 8.61a1.34 1.34 0 0 0-1.34-1.34h-1.3v-.3a1.34 1.34 0 0 0-1.33-1.34h-.3a1.34 1.34 0 0 0-1.34 1.34v.3h-7.46v-.3a1.34 1.34 0 0 0-1.34-1.34h-.3a1.34 1.34 0 0 0-1.33 1.34v.3H4a1.34 1.34 0 0 0-1.34 1.34v.3a1.34 1.34 0 0 0 1.34 1.34h.3a1.34 1.34 0 0 0 1.33-1.34v-.3h1.3v9.4a1.34 1.34 0 0 0 1.34 1.33h.3a1.34 1.34 0 0 0 1.34-1.33v-4.03h4.82v4.03a1.34 1.34 0 0 0 1.34 1.33h.3a1.34 1.34 0 0 0 1.34-1.33v-9.4h1.3v.3a1.34 1.34 0 0 0 1.33 1.34h.3a1.34 1.34 0 0 0 1.34-1.34V8.6zm-8.8 6.67h-3.48v-4.7h3.48zm-2.4-6.02a1.06 1.06 0 1 1-1.05-1.06 1.06 1.06 0 0 1 1.06 1.06m3.45 0a1.06 1.06 0 1 1-1.05-1.06 1.06 1.06 0 0 1 1.05 1.06"/></svg>
+                    </a>
                 </div>
                 <div class="contact-details">
                     <div class="contact-item">
-                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Email</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
-                        <!-- Add your email address here -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
                         <span>manoharnimiditalli001@gmail.com</span>
                     </div>
                     <div class="contact-item">
-                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Phone</title><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                        <!-- Add your phone number here -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                         <span>8897539799</span>
                     </div>
                 </div>
             </section>
         </div>
-
-        <!-- Right Column: Projects -->
         <div class="right-column">
             <section id="projects" class="scroll-section">
-                <h2>Projects</h2>
+                <h2>Featured Projects</h2>
                 <ul>
-                    <!-- For each project, add a title, description, and links -->
-                    <li>
-                        <strong>BARK AI</strong> - An advanced RAG-based conversational AI assistant designed to support veterinary professionals by providing evidence-based insights for canine diagnostics from a curated knowledge base. 
+                    <li style="--i: 0;">
+                        <span class="project-title">BARK AI</span>
+                        <p class="project-description">
+                            An advanced RAG-based conversational AI assistant to support veterinary professionals by providing evidence-based insights for canine diagnostics from a curated knowledge base.
+                        </p>
                         <div class="project-links">
-                            <!-- Add the Demo link here -->
-                            <a href="https://bark-ai.streamlit.app/" class="action-link">Demo</a>
-                            <!-- Add the Code link here -->
-                            <a href="https://github.com/manuume/bark-ai" class="action-link">Code</a>
+                            <a href="https://bark-ai.streamlit.app/" target="_blank" class="action-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                <span>Demo</span>
+                            </a>
+                            <a href="https://github.com/manuume/bark-ai" target="_blank" class="action-link">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                <span>Code</span>
+                            </a>
                         </div>
                     </li>
-                    
-                    <li><strong>TarantinoBot</strong> -a fine-tuned model that generate movie scene in the style of tarantino. <div class="project-links"><a href="https://huggingface.co/spaces/manohar3181/taratino-bot" class="action-link">Demo</a><a href="https://github.com/manuume/TarantinoBot" class="action-link">Code</a></div></li>
-                    <li><strong>AI-Powered Receipt Data Extraction System</strong> a full-stack, AI-powered document extraction pipeline by fine-tuning a Qwen Vision-Language Model, serving it with a high-performance FastAPI/vLLM backend, and architecting a MongoDB database to enable future Retrieval-Augmented Generation (RAG) for analytics.<div class="project-links"><a href="#demo" class="action-link">Demo</a><a href="https://github.com/manuume/invoice_finetuned.git" class="action-link">Code</a></div></li>
-                    
-                    <li><strong>CIPE</strong> - Customer Influence and Persuasion Engine. <div class="project-links"><a href="https://cipe-demo.streamlit.app/" class="action-link">Demo</a><a href="https://github.com/manuume/CIPE" class="action-link">Code</a></div></li>
-                    <li><strong>Smile Detection App</strong> - A fun AI-powered web application that automatically takes a selfie when you smile! <div class="project-links"><a href="#demo" class="action-link">Demo</a><a href="https://github.com/manuume/selfie_detection" class="action-link">Code</a></div></li>
-                    <li><strong>Music genre prediction ML model</strong> - An end-to-end machine learning pipeline for music genre classification using CNN and MFCC features. <div class="project-links"><a href="#demo" class="action-link">Demo</a><a href="https://github.com/manuume/music_genre_prediction_mlops_project_MSA24025" class="action-link">Code</a></div></li>
-                    </ul>
+                    <li style="--i: 1;">
+                        <span class="project-title">TarantinoBot</span>
+                        <p class="project-description">
+                           A fine-tuned model that generates movie scenes in the iconic style of Quentin Tarantino.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://huggingface.co/spaces/manohar3181/taratino-bot" target="_blank" class="action-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                <span>Demo</span>
+                            </a>
+                            <a href="https://github.com/manuume/TarantinoBot" target="_blank" class="action-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                <span>Code</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li style="--i: 2;">
+                        <span class="project-title">AI Receipt Data Extraction</span>
+                        <p class="project-description">
+                            A full-stack AI pipeline using a fine-tuned Qwen Vision-Language Model to extract data from receipts, served via a FastAPI/vLLM backend and stored in MongoDB for future RAG analytics.
+                        </p>
+                        <div class="project-links">
+                             <a href="https://github.com/manuume/invoice_finetuned.git" target="_blank" class="action-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                <span>Code</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li style="--i: 3;">
+                        <span class="project-title">CIPE</span>
+                        <p class="project-description">
+                            Customer Influence and Persuasion Engine (CIPE). An application designed to analyze and enhance customer interactions.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://cipe-demo.streamlit.app/" target="_blank" class="action-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                <span>Demo</span>
+                            </a>
+                            <a href="https://github.com/manuume/CIPE" target="_blank" class="action-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                <span>Code</span>
+                            </a>
+                        </div>
+                    </li>
+                     <li style="--i: 4;">
+                        <span class="project-title">Smile Detection App</span>
+                        <p class="project-description">
+                           A fun AI-powered web application that automatically takes a selfie when you smile!
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/manuume/selfie_detection" target="_blank" class="action-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                <span>Code</span>
+                            </a>
+                        </div>
+                    </li>
+                     <li style="--i: 5;">
+                        <span class="project-title">Music Genre Prediction</span>
+                        <p class="project-description">
+                           An end-to-end machine learning pipeline for music genre classification using CNN and MFCC features, built with MLOps principles.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/manuume/music_genre_prediction_mlops_project_MSA24025" target="_blank" class="action-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                <span>Code</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
             </section>
         </div>
     </div>
@@ -312,10 +636,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
